@@ -29,22 +29,27 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AbstractEntity implements Serializable {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(updatable = false)
 	protected Long id;
+	
 	@Version
 	protected int version;
+	
 	@CreatedBy
 	protected String createdBy;
+	
 	@LastModifiedBy
 	protected String updatedBy;
+	
 	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern = DateUtils.DATE_FORMAT)
 	@CreatedDate
 	@DateTimeFormat(pattern = DateUtils.DATE_FORMAT)
 	@Column(name="created_at",nullable = false,updatable = false)
 	protected LocalDateTime createdAt;
+	
 	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern = DateUtils.DATE_FORMAT)
 	@LastModifiedDate
 	@DateTimeFormat(pattern = DateUtils.DATE_FORMAT)

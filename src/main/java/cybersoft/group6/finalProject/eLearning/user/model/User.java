@@ -1,9 +1,12 @@
 package cybersoft.group6.finalProject.eLearning.user.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import cybersoft.group6.finalProject.eLearning.commondata.model.AbstractEntity;
+import cybersoft.group6.finalProject.eLearning.course.model.Course;
 import cybersoft.group6.finalProject.eLearning.payment.model.Payment;
 import cybersoft.group6.finalProject.eLearning.role.model.Role;
 import cybersoft.group6.finalProject.eLearning.teacher.model.Teacher;
