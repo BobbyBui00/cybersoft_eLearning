@@ -17,19 +17,21 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Course extends AbstractEntity {
-	@NotBlank
+	@NotBlank(message = "{course.courseName.not-blank}")
 	private String courseName;
 	
 	private String courseDescription;
 	
+	@NotBlank(message = "{course.duration.not-blank}")
 	private double duration;
 	
+	@NotBlank(message = "{course.courseInstructor.not-blank}")
 	private User courseInstructor;
 	
-	@NotBlank
+	@NotBlank(message = "{course.rating.not-blank}")
 	private float rating;
 	
-	@NotBlank
+	@NotBlank (message ="{course.price.not-blank}")
 	private double price;
 	
 	private String avatar;
