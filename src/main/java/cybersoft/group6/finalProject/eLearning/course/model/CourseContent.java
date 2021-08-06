@@ -16,8 +16,10 @@ public class CourseContent extends AbstractEntity {
 
 	@NotBlank
 	private String videoName;
+	
 	@NotBlank
 	private String videoPath;
+	
 	@NotBlank
 	private String videoDuration;
 }

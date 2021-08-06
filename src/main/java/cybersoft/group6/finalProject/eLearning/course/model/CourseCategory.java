@@ -16,6 +16,7 @@ public class CourseCategory extends AbstractEntity {
 
 	@NotBlank
 	private String courseCategoryId;
+	
 	@NotBlank
 	private String courseCategoryName;
 }
