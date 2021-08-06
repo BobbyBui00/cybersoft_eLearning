@@ -1,9 +1,14 @@
 package cybersoft.group6.finalProject.eLearning.course.model;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -17,27 +22,38 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Course extends AbstractEntity {
-	@NotBlank
+	@NotBlank(message = "{course.courseName.not-blank}")
 	private String courseName;
 	
 	private String courseDescription;
 	
+	@NotBlank(message = "{course.duration.not-blank}")
 	private double duration;
 	
+	@NotBlank(message = "{course.courseInstructor.not-blank}")
 	private User courseInstructor;
 	
-	@NotBlank
+	@NotBlank(message = "{course.rating.not-blank}")
 	private float rating;
 	
-	@NotBlank
+	@NotBlank (message ="{course.price.not-blank}")
 	private double price;
 	
 	private String avatar;
 	
-	private List<CourseContent> courseContent;
+	@OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+	private Set<CourseContent> courseContent = new HashSet<>();
 	
-	private List<CourseCategory> courseCategory;
+	@ManyToMany(mappedBy = "course")
+	private Set<CourseCategory> courseCategory = new HashSet<>();
 	
 	private int learnerNumber;
+	
+	@ManyToMany(mappedBy = "courseList", fetch = FetchType.LAZY)
+	private Set<User> registedUser = new HashSet<>();
+	
+	@ManyToMany(mappedBy = "wishList", fetch = FetchType.LAZY)
+	private Set<User> userWishList = new HashSet<>();
+	
 	
 }
