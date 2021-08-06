@@ -1,9 +1,12 @@
 package cybersoft.group6.finalProject.eLearning.course.model;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -36,9 +39,11 @@ public class Course extends AbstractEntity {
 	
 	private String avatar;
 	
-	private List<CourseContent> courseContent;
+	@OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+	private Set<CourseContent> courseContent = new HashSet<>();
 	
-	private List<CourseCategory> courseCategory;
+	@ManyToMany(mappedBy = "course")
+	private Set<CourseCategory> courseCategory = new HashSet<>();
 	
 	private int learnerNumber;
 	

@@ -25,9 +25,9 @@ public class User extends AbstractEntity {
 	
 	private String confirmPassword;
 	
-	private List<Course> courseList;
-	
-	private List<Course> wishList;
+//	private List<Course> courseList;
+//	
+//	private List<Course> wishList;
 	
 	private String gmail;
 	
