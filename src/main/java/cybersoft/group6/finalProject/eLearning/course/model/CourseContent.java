@@ -1,6 +1,8 @@
 package cybersoft.group6.finalProject.eLearning.course.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -22,4 +24,7 @@ public class CourseContent extends AbstractEntity {
 	
 	@NotBlank
 	private String videoDuration;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Course course;
 }

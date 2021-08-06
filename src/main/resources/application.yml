@@ -1,6 +1,6 @@
 # Server configuration
 server:
-  port: 8080
+  port: 8089
   
 # JPA configuration
 spring:
@@ -16,4 +16,3 @@ spring:
   jackson:
     serialization:
       fail-on-empty-beans: false
-         

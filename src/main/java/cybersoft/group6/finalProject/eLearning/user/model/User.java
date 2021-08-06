@@ -50,5 +50,6 @@ public class User extends AbstractEntity {
 	private String gmail;
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-	private Payment paymentInfo;
+//	private Payment paymentInfo;
+	private Set<Payment> paymentInfo = new HashSet<Payment>();
 }
