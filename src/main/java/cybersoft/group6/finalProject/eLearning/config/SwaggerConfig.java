@@ -27,9 +27,7 @@ public class SwaggerConfig {
 		return new ApiInfoBuilder()
 			.title("eLearning Application")
 			.description("eLearning - final project.")
-			.contact(new Contact("Khoa Bui", "khoabui20102000@gmail.com", "khoabui.dev"))
-			.contact(new Contact("Tue Bui", "buitue28061999@gmail.com", "tuebui.dev"))
-			.contact(new Contact("Quoc Dong", "", "quocdong.dev"))
+			.contact(new Contact("buitue28061999@gmail.com", "khoabui20102000@gmail.com", ""))
 			.license("MIT2")
 			.build();
 	}
