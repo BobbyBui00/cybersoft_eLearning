@@ -1,10 +1,12 @@
 package cybersoft.group6.finalProject.eLearning.course.model;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -46,5 +48,12 @@ public class Course extends AbstractEntity {
 	private Set<CourseCategory> courseCategory = new HashSet<>();
 	
 	private int learnerNumber;
+	
+	@ManyToMany(mappedBy = "courseList", fetch = FetchType.LAZY)
+	private Set<User> registedUser = new HashSet<>();
+	
+	@ManyToMany(mappedBy = "wishList", fetch = FetchType.LAZY)
+	private Set<User> userWishList = new HashSet<>();
+	
 	
 }
