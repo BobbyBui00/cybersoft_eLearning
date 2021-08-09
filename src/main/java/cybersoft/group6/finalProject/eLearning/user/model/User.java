@@ -32,6 +32,10 @@ public class User extends AbstractEntity {
 	
 	private String confirmPassword;
 	
+	private int exp;
+	
+	private Double rating;
+	
 	@Enumerated(EnumType.STRING)
 	private UserRole role;
 	
