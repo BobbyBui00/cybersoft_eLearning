@@ -12,6 +12,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import cybersoft.group6.finalProject.eLearning.commondata.model.AbstractEntity;
 import cybersoft.group6.finalProject.eLearning.course.model.Course;
@@ -26,10 +28,14 @@ import lombok.Setter;
 @Setter
 public class User extends AbstractEntity {
 
+	@NotBlank(message = "{user.username.not-blank}}")
+	@Size(min = 3, max = 100, message = "{user.username.size}")
 	private String username;
 	
+	@NotBlank(message = "{user.password.not-blank")
 	private String password;
 	
+	@NotBlank(message = "{user.confirmPassword.not-blank}")
 	private String confirmPassword;
 	
 	private int exp;
@@ -51,6 +57,7 @@ public class User extends AbstractEntity {
 				inverseJoinColumns = @JoinColumn(name = "course_id"))
 	private Set<Course> wishList = new HashSet<>();
 	
+	@NotBlank(message = "{user.gmail.not-blank}")
 	private String gmail;
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
