@@ -18,7 +18,7 @@ import javax.validation.constraints.Size;
 import cybersoft.group6.finalProject.eLearning.commondata.model.AbstractEntity;
 import cybersoft.group6.finalProject.eLearning.course.model.Course;
 import cybersoft.group6.finalProject.eLearning.payment.model.Payment;
-//import cybersoft.group6.finalProject.eLearning.user.utils.UserRole;
+import cybersoft.group6.finalProject.eLearning.user.utils.UserRole;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -43,7 +43,7 @@ public class User extends AbstractEntity {
 	private Double rating;
 	
 	@Enumerated(EnumType.STRING)
-	private User role;
+	private UserRole role;
 	
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinTable(name = "user_course_registered_list",
