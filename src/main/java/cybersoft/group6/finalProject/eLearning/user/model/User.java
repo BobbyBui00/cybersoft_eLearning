@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import cybersoft.group6.finalProject.eLearning.commondata.model.AbstractEntity;
 import cybersoft.group6.finalProject.eLearning.course.model.Course;
 import cybersoft.group6.finalProject.eLearning.payment.model.Payment;
-import cybersoft.group6.finalProject.eLearning.user.utils.UserRole;
+//import cybersoft.group6.finalProject.eLearning.user.utils.UserRole;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -37,7 +37,7 @@ public class User extends AbstractEntity {
 	private Double rating;
 	
 	@Enumerated(EnumType.STRING)
-	private UserRole role;
+	private User role;
 	
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinTable(name = "user_course_registered_list",
