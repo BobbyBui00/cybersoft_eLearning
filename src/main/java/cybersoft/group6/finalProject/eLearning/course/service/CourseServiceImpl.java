@@ -36,6 +36,7 @@ public class CourseServiceImpl extends GenericServiceImpl<Course, Long> implemen
 		Course course = new Course();
 		course = mapper.map(dto, course);
 		
+		//only find the attribute, not the relationship
 		User instructors = userRepository.findByUsername(dto.getCourseInstructor());
 		course.setCourseInstructor(instructors);
 		return courseRepository.save(course);

@@ -11,7 +11,7 @@ public class UpdateCourseDto {
 	@NotBlank(message = "{course.courseName.not-blank}")
 	private String courseName;
 	
-	@NotBlank(message = "{course.price.not-blank}")
+//	@NotBlank(message = "{course.price.not-blank}")
 	private double price;
 	
 	@NotBlank(message = "{course.description.not-blank}")
