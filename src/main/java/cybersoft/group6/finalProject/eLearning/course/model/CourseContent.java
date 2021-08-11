@@ -14,8 +14,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "course_content")
-
+@Table(name = "elearning_course_content")
+@Getter
+@Setter
 public class CourseContent extends AbstractEntity {
 
 	@NotBlank(message = "{courseContent.videoname.not-blank}")
@@ -27,7 +28,6 @@ public class CourseContent extends AbstractEntity {
 	@NotBlank(message = "{courseContent.videoDuration.not-blank}")
 	private String videoDuration;
 	
-	
 	private int numberVideo;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -38,46 +38,6 @@ public class CourseContent extends AbstractEntity {
 	{
 		this.videoName=videoName;
 		return this;
-	}
-
-	public String getVideoName() {
-		return videoName;
-	}
-
-	public void setVideoName(String videoName) {
-		this.videoName = videoName;
-	}
-
-	public String getVideoPath() {
-		return videoPath;
-	}
-
-	public void setVideoPath(String videoPath) {
-		this.videoPath = videoPath;
-	}
-
-	public String getVideoDuration() {
-		return videoDuration;
-	}
-
-	public void setVideoDuration(String videoDuration) {
-		this.videoDuration = videoDuration;
-	}
-
-	public int getNumberVideo() {
-		return numberVideo;
-	}
-
-	public void setNumberVideo(int numberVideo) {
-		this.numberVideo = numberVideo;
-	}
-
-	public Course getCourse() {
-		return course;
-	}
-
-	public void setCourse(Course course) {
-		this.course = course;
 	}
 	
 	

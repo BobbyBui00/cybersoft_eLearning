@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -22,8 +21,6 @@ import cybersoft.group6.finalProject.eLearning.commondata.model.ResponseHandler;
 import cybersoft.group6.finalProject.eLearning.course.dto.UpdateCourseContentDto;
 import cybersoft.group6.finalProject.eLearning.course.model.CourseContent;
 import cybersoft.group6.finalProject.eLearning.course.service.CourseContentService;
-import cybersoft.group6.finalProject.eLearning.util.MapDtoToModel;
-import io.swagger.models.Response;
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -31,16 +28,15 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class CourseContentController {
 
-	@Autowired
 	private CourseContentService service;
 	
 	@GetMapping("")
 	public ResponseEntity<Object> findAllCourseContent(){
 		List<CourseContent> courseContent=service.findAll();
 		
-		if(courseContent.isEmpty()) {
+		if(courseContent.isEmpty())
 			return ResponseHandler.getResponse("There is no data", HttpStatus.OK);
-		}
+		
 		return ResponseHandler.getResponse(courseContent, HttpStatus.OK);
 	}
 	
@@ -52,7 +48,6 @@ public class CourseContentController {
 			return ResponseHandler.getResponse("There no data id "+ id,HttpStatus.BAD_REQUEST);
 		
 		return ResponseHandler.getResponse(courseContents, HttpStatus.OK);
-		
 			
 	}
 	
@@ -62,12 +57,13 @@ public class CourseContentController {
 	{
 		if(bindingResult.hasErrors())
 			return ResponseHandler.getResponse(bindingResult, HttpStatus.BAD_REQUEST);
+		
 		CourseContent addCourseContent=service.save(courseContent);
 		return ResponseHandler.getResponse(addCourseContent, HttpStatus.OK);
 	}
 	
 	@PutMapping("/{courseContent-id}")
-	public ResponseEntity<Object> updateCourseContent(@Valid @RequestBody UpdateCourseContentDto dto,@PathVariable ("courseContent-id") Long courseContentId,BindingResult bindingResult)
+	public ResponseEntity<Object> updateCourseContent(@Valid @RequestBody UpdateCourseContentDto dto, @PathVariable ("courseContent-id") Long courseContentId,BindingResult bindingResult)
 	{
 		if(courseContentId == null)
 			return ResponseHandler.getResponse(HttpStatus.BAD_REQUEST);

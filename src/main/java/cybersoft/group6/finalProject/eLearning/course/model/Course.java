@@ -20,7 +20,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "course")
+@Table(name = "elearnig_course")
 @Getter
 @Setter
 public class Course extends AbstractEntity {

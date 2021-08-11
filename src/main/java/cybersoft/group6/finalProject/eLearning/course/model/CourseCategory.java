@@ -18,7 +18,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "course_category")
+@Table(name = "elearning_course_category")
 @Getter
 @Setter
 public class CourseCategory extends AbstractEntity {
