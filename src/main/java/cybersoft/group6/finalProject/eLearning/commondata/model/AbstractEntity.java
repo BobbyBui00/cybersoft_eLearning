@@ -43,7 +43,6 @@ public class AbstractEntity implements Serializable {
 	protected String updatedBy;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern = DateUtils.DATE_FORMAT)
-	
 	@DateTimeFormat(pattern = DateUtils.DATE_FORMAT)
 	@CreatedDate
 	@Column(name="created_at",nullable = false,updatable = false)
