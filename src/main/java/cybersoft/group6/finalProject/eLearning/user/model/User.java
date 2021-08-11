@@ -7,13 +7,17 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import cybersoft.group6.finalProject.eLearning.commondata.model.AbstractEntity;
 import cybersoft.group6.finalProject.eLearning.course.model.Course;
@@ -63,4 +67,11 @@ public class User extends AbstractEntity {
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 //	private Payment paymentInfo;
 	private Set<Payment> paymentInfo = new HashSet<Payment>();
+	
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinTable(name = "user_course_instructor",
+				joinColumns = @JoinColumn(name = "user_id"),
+				inverseJoinColumns = @JoinColumn(name = "course_id"))
+	private Set<Course> instructors = new HashSet<>();
+	
 }
