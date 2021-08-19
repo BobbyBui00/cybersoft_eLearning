@@ -2,23 +2,29 @@ package cybersoft.group6.finalProject.eLearning.course.model;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 import cybersoft.group6.finalProject.eLearning.commondata.model.AbstractEntity;
+
 import cybersoft.group6.finalProject.eLearning.user.model.User;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "course")
+@Table(name = "elearnig_course")
 @Getter
 @Setter
 public class Course extends AbstractEntity {
@@ -27,16 +33,14 @@ public class Course extends AbstractEntity {
 	
 	private String courseDescription;
 	
-	@NotBlank(message = "{course.duration.not-blank}")
 	private double duration;
 	
-	@NotBlank(message = "{course.courseInstructor.not-blank}")
-	private User courseInstructor;
+//	@NotBlank(message = "{course.courseInstructor.not-blank}")
+	@ManyToMany(mappedBy = "instructors", fetch = FetchType.LAZY)
+	private Set<User> courseInstructor = new HashSet<>();
 	
-	@NotBlank(message = "{course.rating.not-blank}")
 	private float rating;
 	
-	@NotBlank (message ="{course.price.not-blank}")
 	private double price;
 	
 	private String avatar;
@@ -54,6 +58,11 @@ public class Course extends AbstractEntity {
 	
 	@ManyToMany(mappedBy = "wishList", fetch = FetchType.LAZY)
 	private Set<User> userWishList = new HashSet<>();
+
+	public void setCourseInstructor(User user) {
+		// TODO Auto-generated method stub
+		this.courseInstructor.add(user);
+	}
 	
 	
 }

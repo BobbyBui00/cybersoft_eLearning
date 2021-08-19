@@ -24,10 +24,11 @@ import cybersoft.group6.finalProject.eLearning.util.DateUtils;
 import lombok.Getter;
 import lombok.Setter;
 
+
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-@Getter
 @Setter
+@Getter
 public class AbstractEntity implements Serializable {
 	
 	@Id
@@ -45,14 +46,14 @@ public class AbstractEntity implements Serializable {
 	protected String updatedBy;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern = DateUtils.DATE_FORMAT)
-	@CreatedDate
 	@DateTimeFormat(pattern = DateUtils.DATE_FORMAT)
+	@CreatedDate
 	@Column(name="created_at",nullable = false,updatable = false)
 	protected LocalDateTime createdAt;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern = DateUtils.DATE_FORMAT)
 	@LastModifiedDate
 	@DateTimeFormat(pattern = DateUtils.DATE_FORMAT)
-	@Column(name="updated_at",nullable = false,updatable = false)
+	@Column(name="updated_at",nullable = false)
 	protected LocalDateTime updatedAt;
 }

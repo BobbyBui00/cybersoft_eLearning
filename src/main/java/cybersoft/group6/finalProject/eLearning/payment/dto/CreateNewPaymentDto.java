@@ -1,22 +1,12 @@
-package cybersoft.group6.finalProject.eLearning.payment.model;
+package cybersoft.group6.finalProject.eLearning.payment.dto;
 
-
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-
-import cybersoft.group6.finalProject.eLearning.commondata.model.AbstractEntity;
-import cybersoft.group6.finalProject.eLearning.user.model.User;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
-@Table(name = "elearning_payment")
 @Getter
 @Setter
-public class Payment extends AbstractEntity {
+public class CreateNewPaymentDto {
 
 	@NotBlank(message = "{payment.cardNumber.not-blank}")
 	private String cardNumber;
@@ -33,6 +23,5 @@ public class Payment extends AbstractEntity {
 	@NotBlank(message = "{payment.dateExpired.not-blank}")
 	private String dateExpired;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	private User user;
+	private String user;
 }
