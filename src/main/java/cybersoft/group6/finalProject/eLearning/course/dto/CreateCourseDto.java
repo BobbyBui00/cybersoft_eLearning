@@ -15,7 +15,8 @@ public class CreateCourseDto {
 	private double price;
 	
 	@NotBlank(message = "{course.description.not-blank}")
-	private String description;
+	private String courseDescription;
+
 	
 	@NotBlank(message = "{course.courseInstructor.not-blank}")
 	private String courseInstructor;
