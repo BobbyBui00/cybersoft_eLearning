@@ -44,7 +44,7 @@ public class CourseContentController {
 	public ResponseEntity<Object> findById(@PathVariable ("courseContent-id") Long id)
 	{
 		Optional<CourseContent> courseContents=service.findById(id);
-		if(courseContents.isEmpty())
+		if(courseContents == null)
 			return ResponseHandler.getResponse("There no data id ", HttpStatus.BAD_REQUEST);
 		
 		return ResponseHandler.getResponse(courseContents, HttpStatus.OK);
