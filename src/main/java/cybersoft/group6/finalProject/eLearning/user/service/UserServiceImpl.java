@@ -1,6 +1,5 @@
 package cybersoft.group6.finalProject.eLearning.user.service;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import cybersoft.group6.finalProject.eLearning.commonData1.GenericServiceImpl;
