@@ -45,7 +45,7 @@ public class CourseContentController {
 	{
 		Optional<CourseContent> courseContents=service.findById(id);
 		if(courseContents.isEmpty())
-			return ResponseHandler.getResponse("There no data id "+ id,HttpStatus.BAD_REQUEST);
+			return ResponseHandler.getResponse("There no data id ", HttpStatus.BAD_REQUEST);
 		
 		return ResponseHandler.getResponse(courseContents, HttpStatus.OK);
 			
