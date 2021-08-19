@@ -37,8 +37,6 @@ public class CourseServiceImpl extends GenericServiceImpl<Course, Long> implemen
 		course = mapper.map(dto, course);
 		
 		//only find the attribute, not the relationship
-		// Use Optional only when they require or suggest
-		System.out.println(course.getCourseDescription());
 		User instructors = userRepository.findByUsername(dto.getCourseInstructor());
 		course.setCourseInstructor(instructors);
 		return courseRepository.save(course);
