@@ -11,7 +11,6 @@ public class DateUtils {
 	
 	
 	public static String toString(LocalDateTime date) {
-		
 		return date.format(formatter);
 	}
 	

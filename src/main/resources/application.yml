@@ -1,8 +1,6 @@
 # Server configuration
 server:
   port: 8089
-  
-# JPA configuration
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/elearning
@@ -12,7 +10,7 @@ spring:
     show-sql: true
     generate-ddl: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
   jackson:
     serialization:
       fail-on-empty-beans: false

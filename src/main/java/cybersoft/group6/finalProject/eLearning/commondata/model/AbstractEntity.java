@@ -21,13 +21,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import cybersoft.group6.finalProject.eLearning.util.DateUtils;
-import lombok.Getter;
-import lombok.Setter;
+
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-@Getter
-@Setter
+
 public class AbstractEntity implements Serializable {
 	
 	@Id
@@ -45,14 +43,65 @@ public class AbstractEntity implements Serializable {
 	protected String updatedBy;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern = DateUtils.DATE_FORMAT)
-	@CreatedDate
 	@DateTimeFormat(pattern = DateUtils.DATE_FORMAT)
+	@CreatedDate
 	@Column(name="created_at",nullable = false,updatable = false)
 	protected LocalDateTime createdAt;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern = DateUtils.DATE_FORMAT)
 	@LastModifiedDate
 	@DateTimeFormat(pattern = DateUtils.DATE_FORMAT)
-	@Column(name="updated_at",nullable = false,updatable = false)
+	@Column(name="updated_at",nullable = false)
 	protected LocalDateTime updatedAt;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public String getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+	
+	
+	
 }
