@@ -21,13 +21,10 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @Service
 public class CourseServiceImpl extends GenericServiceImpl<Course, Long> implements CourseService {
-	@Autowired
 	private CourseRepository courseRepository;
 	
-	@Autowired
 	private UserRepository userRepository;
 	
-	private ModelMapper model;
 	private MapDtoToModel<Object, Course> mapper;
 
 	@Override
@@ -47,7 +44,7 @@ public class CourseServiceImpl extends GenericServiceImpl<Course, Long> implemen
 		// TODO Auto-generated method stub
 		
 		Course updatedCourse = courseRepository.getById(courseId);
-		model.map(dto, updatedCourse);
+		updatedCourse = mapper.map(dto, updatedCourse);
 		
 		return courseRepository.save(updatedCourse);
 	}

@@ -1,6 +1,5 @@
 package cybersoft.group6.finalProject.eLearning.course.controller;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.validation.Valid;

@@ -1,6 +1,5 @@
 package cybersoft.group6.finalProject.eLearning.course.service;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import cybersoft.group6.finalProject.eLearning.commonData1.GenericServiceImpl;
@@ -19,13 +18,11 @@ public class CourseContentServiceImpl extends GenericServiceImpl<CourseContent, 
 	
 	private MapDtoToModel<Object, CourseContent> mapper;
 	
-	private ModelMapper modelMapper;
-	
 	@Override
 	public CourseContent updateCourseContentInfo(UpdateCourseContentDto dto, Long courseContentId) {
 		// TODO Auto-generated method stub
 		CourseContent content = repository.getById(courseContentId);
-		modelMapper.map(dto, content);
+		content = mapper.map(dto, content);
 		
 		return repository.save(content);
 	}
