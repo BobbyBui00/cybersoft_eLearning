@@ -1,6 +1,5 @@
 package cybersoft.group6.finalProject.eLearning.course.controller;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -9,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +25,7 @@ import cybersoft.group6.finalProject.eLearning.course.model.Course;
 import cybersoft.group6.finalProject.eLearning.course.service.CourseService;
 import lombok.AllArgsConstructor;
 
+//@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/course")
 @AllArgsConstructor
