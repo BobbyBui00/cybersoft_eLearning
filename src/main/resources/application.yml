@@ -1,9 +1,18 @@
 # Server configuration
 server:
   port: 8089
+  
+allowed:
+  origins: http://localhost:4200
+  
 spring:
+  data:
+    rest:
+      base-path: /api
   datasource:
-    url: jdbc:postgresql://localhost:5432/elearning
+
+    url: jdbc:postgresql://localhost:5433/elearning
+
     username: postgres
     password: admin
   jpa:
@@ -14,3 +23,5 @@ spring:
   jackson:
     serialization:
       fail-on-empty-beans: false
+      
+      
