@@ -1,5 +1,6 @@
 package cybersoft.group6.finalProject.eLearning.course.service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -52,6 +53,19 @@ public class CourseServiceImpl extends GenericServiceImpl<Course, Long> implemen
 		model.map(dto, updatedCourse);
 		
 		return courseRepository.save(updatedCourse);
+	}
+
+	@Override
+	public List<Course> findCourses(String courseName) {
+		// TODO Auto-generated method stub
+		
+		return courseRepository.findCourses(courseName);
+	}
+
+	@Override
+	public List<Course> findByCourseNameContaining(String courseName) {
+		// TODO Auto-generated method stub
+		return courseRepository.findByCourseNameContaining(courseName);
 	}
 	
 	

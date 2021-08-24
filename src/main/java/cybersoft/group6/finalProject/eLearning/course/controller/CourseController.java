@@ -47,6 +47,15 @@ public class CourseController {
 		return ResponseHandler.getResponse(courses, HttpStatus.OK);
 	}
 	
+	@GetMapping("/{course-name}")
+	public ResponseEntity<Object> findCourse(@PathVariable ("course-name") String name)
+	{
+		List<Course> courses=courseService.findByCourseNameContaining(name);
+		if(courses.isEmpty())
+			return ResponseHandler.getResponse("There is no data",HttpStatus.OK );
+		return ResponseHandler.getResponse(courses, HttpStatus.OK);
+	}
+	
 	@PostMapping("")
 	public ResponseEntity<Object> addNewCourse(@Valid 
 												@RequestBody 
