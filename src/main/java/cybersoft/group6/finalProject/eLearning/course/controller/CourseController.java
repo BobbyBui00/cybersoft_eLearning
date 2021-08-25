@@ -1,11 +1,14 @@
 package cybersoft.group6.finalProject.eLearning.course.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,6 +20,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonObjectFormatVisitor;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 
 import cybersoft.group6.finalProject.eLearning.commondata.model.ResponseHandler;
 import cybersoft.group6.finalProject.eLearning.course.dto.CreateCourseDto;
