@@ -16,5 +16,5 @@ public interface CourseService extends GenericService<Course, Long> {
 	
 	public List<Course> findByCourseNameContaining(String courseName);
 
-	List<Course> findByCourseIdContaining(int courseId);
+	List<Course> findByCourseId(Long courseId);
 }
