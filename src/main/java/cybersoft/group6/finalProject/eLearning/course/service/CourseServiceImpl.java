@@ -69,9 +69,9 @@ public class CourseServiceImpl extends GenericServiceImpl<Course, Long> implemen
 	}
 
 	@Override
-	public List<Course> findByCourseId(Long courseId) {
+	public Optional<Course> findByCourseId(Long courseId) {
 		// TODO Auto-generated method stub
-		return courseRepository.findByCourseId(courseId);
+		return courseRepository.findById(courseId);
 	}
 	
 	

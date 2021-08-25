@@ -1,6 +1,7 @@
 package cybersoft.group6.finalProject.eLearning.course.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import cybersoft.group6.finalProject.eLearning.commonData1.GenericService;
 import cybersoft.group6.finalProject.eLearning.course.dto.CreateCourseDto;
@@ -16,5 +17,5 @@ public interface CourseService extends GenericService<Course, Long> {
 	
 	public List<Course> findByCourseNameContaining(String courseName);
 
-	List<Course> findByCourseId(Long courseId);
+	Optional<Course> findByCourseId(Long courseId);
 }

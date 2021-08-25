@@ -2,6 +2,7 @@ package cybersoft.group6.finalProject.eLearning.course.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.Entity;
 import javax.validation.Valid;
@@ -53,8 +54,8 @@ public class CourseController {
 		return ResponseHandler.getResponse(courses, HttpStatus.OK);
 	}
 	
-	@GetMapping("/{course-name}")
-	public ResponseEntity<Object> findCourseByCourseName(@PathVariable ("course-name") String name)
+	@GetMapping("search/{course-name}")
+	public ResponseEntity<Object> findCourseByCourseName(@PathVariable("course-name") String name)
 	{
 		List<Course> courses = courseService.findByCourseNameContaining(name);
 		if(courses.isEmpty())
@@ -63,11 +64,13 @@ public class CourseController {
 	}
 	
 	@GetMapping("/{course-id}")
-	public ResponseEntity<Object> findCourseByCourseId(@PathVariable ("course-id") Long courseId)
+	public ResponseEntity<Object> findCourseById(@PathVariable("course-id") Long courseId)
 	{
-		List<Course> courses = courseService.findByCourseId(courseId);
+		Optional<Course> courses = courseService.findByCourseId(courseId);
+		
 		if(courses.isEmpty())
 			return ResponseHandler.getResponse("There is no data",HttpStatus.OK );
+		
 		return ResponseHandler.getResponse(courses, HttpStatus.OK);
 	}
 	
