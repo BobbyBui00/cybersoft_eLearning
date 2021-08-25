@@ -20,6 +20,6 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
 	public List<Course> findCourses(String courseName);
 	
 	public List<Course> findByCourseNameContaining(String courseName);
-
-	public List<Course> findByCourseId(Long courseId);
+	
+	public Optional<Course> findById(Long courseId);
 }
