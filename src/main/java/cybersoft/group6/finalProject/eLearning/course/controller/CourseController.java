@@ -63,9 +63,9 @@ public class CourseController {
 	}
 	
 	@GetMapping("/{course-id}")
-	public ResponseEntity<Object> findCourseByCourseId(@PathVariable ("course-id") int courseId)
+	public ResponseEntity<Object> findCourseByCourseId(@PathVariable ("course-id") Long courseId)
 	{
-		List<Course> courses = courseService.findByCourseIdContaining(courseId);
+		List<Course> courses = courseService.findByCourseId(courseId);
 		if(courses.isEmpty())
 			return ResponseHandler.getResponse("There is no data",HttpStatus.OK );
 		return ResponseHandler.getResponse(courses, HttpStatus.OK);
