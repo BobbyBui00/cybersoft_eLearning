@@ -54,9 +54,18 @@ public class CourseController {
 	}
 	
 	@GetMapping("/{course-name}")
-	public ResponseEntity<Object> findCourse(@PathVariable ("course-name") String name)
+	public ResponseEntity<Object> findCourseByCourseName(@PathVariable ("course-name") String name)
 	{
-		List<Course> courses=courseService.findByCourseNameContaining(name);
+		List<Course> courses = courseService.findByCourseNameContaining(name);
+		if(courses.isEmpty())
+			return ResponseHandler.getResponse("There is no data",HttpStatus.OK );
+		return ResponseHandler.getResponse(courses, HttpStatus.OK);
+	}
+	
+	@GetMapping("/{course-id}")
+	public ResponseEntity<Object> findCourseByCourseId(@PathVariable ("course-id") int courseId)
+	{
+		List<Course> courses = courseService.findByCourseIdContaining(courseId);
 		if(courses.isEmpty())
 			return ResponseHandler.getResponse("There is no data",HttpStatus.OK );
 		return ResponseHandler.getResponse(courses, HttpStatus.OK);
