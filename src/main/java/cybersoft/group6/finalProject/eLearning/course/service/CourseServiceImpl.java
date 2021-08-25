@@ -67,6 +67,12 @@ public class CourseServiceImpl extends GenericServiceImpl<Course, Long> implemen
 		// TODO Auto-generated method stub
 		return courseRepository.findByCourseNameContaining(courseName);
 	}
+
+	@Override
+	public List<Course> findByCourseIdContaining(int courseId) {
+		// TODO Auto-generated method stub
+		return courseRepository.findByCourseIdContaining(courseId);
+	}
 	
 	
 	
