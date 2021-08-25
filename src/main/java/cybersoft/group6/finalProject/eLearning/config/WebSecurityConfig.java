@@ -11,9 +11,16 @@ import java.util.List;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 {
-	
-	
 
+	protected List<String> setUpAllowOrigins() {
+		
+		List<String> allowOrigins = new ArrayList<String>();
+		
+		allowOrigins.add("*");
+		
+		return allowOrigins;
+	}
+	 
 	protected List<String> setUpAllowMethods() {
 		
 		List<String> allowMethods = new ArrayList<String>();
@@ -29,20 +36,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 		
 		return allowMethods;
 	}
-	
-	protected List<String> setUpAllowOrigins() {
-		
-		List<String> allowOrigin = new ArrayList<String>();
-		
-		allowOrigin.add("*");
-		
-		return allowOrigin;
-		
-	}
-	
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-    	
         CorsConfiguration corsConfiguration = new CorsConfiguration();
 //        corsConfiguration.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type"));
         corsConfiguration.setAllowedOrigins(setUpAllowOrigins());
@@ -55,3 +51,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 
     }
 }
+
