@@ -19,7 +19,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
         corsConfiguration.setAllowedOrigins(List.of("*"));
         corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PUT","OPTIONS","PATCH", "DELETE"));
         corsConfiguration.setAllowCredentials(false);
-        corsConfiguration.setExposedHeaders(List.of("Authorization"));
+//        corsConfiguration.setExposedHeaders(List.of("Authorization"));
         // You can customize the following part based on your project, it's only a sample
         http.authorizeRequests().antMatchers("/**").permitAll().anyRequest()
                 .authenticated().and().csrf().disable().cors().configurationSource(request -> corsConfiguration);
