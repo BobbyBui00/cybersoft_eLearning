@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -29,10 +30,7 @@ public class CourseCategory extends AbstractEntity {
 	@NotBlank
 	private String courseCategoryName;
 	
-	@ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-	@JoinTable(name = "course_course_category",
-				joinColumns = @JoinColumn(name = "course_category_id"),
-				inverseJoinColumns = @JoinColumn(name = "course_id"))
+	@OneToMany(mappedBy = "courseCategory", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private Set<Course> course = new HashSet<Course>();
 	
