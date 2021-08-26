@@ -64,7 +64,7 @@ public class Course extends AbstractEntity {
 		this.courseInstructor.add(user);
 	}
 	
-	public void setCourseCategoryName(CourseCategory courseCategory) {
+	public void setCourseCategory(CourseCategory courseCategory) {
 		this.courseCategory.add(courseCategory);
 	}
 	
