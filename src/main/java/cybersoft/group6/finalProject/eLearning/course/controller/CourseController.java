@@ -1,12 +1,15 @@
 package cybersoft.group6.finalProject.eLearning.course.controller;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import javax.persistence.Entity;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,6 +22,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonObjectFormatVisitor;
+import com.fasterxml.jackson.databind.util.JSONPObject;
+
 import cybersoft.group6.finalProject.eLearning.commondata.model.ResponseHandler;
 import cybersoft.group6.finalProject.eLearning.course.dto.CreateCourseDto;
 import cybersoft.group6.finalProject.eLearning.course.dto.UpdateCourseDto;
@@ -26,6 +32,7 @@ import cybersoft.group6.finalProject.eLearning.course.model.Course;
 import cybersoft.group6.finalProject.eLearning.course.service.CourseService;
 import lombok.AllArgsConstructor;
 
+//@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/course")
 @AllArgsConstructor
@@ -44,6 +51,26 @@ public class CourseController {
 		if(courses.isEmpty()) {
 			return ResponseHandler.getResponse("There is no data", HttpStatus.BAD_REQUEST);
 		}
+		
+		return ResponseHandler.getResponse(courses, HttpStatus.OK);
+	}
+	
+	@GetMapping("search/{course-name}")
+	public ResponseEntity<Object> findCourseByCourseName(@PathVariable("course-name") String name)
+	{
+		List<Course> courses = courseService.findByCourseNameContaining(name);
+		if(courses.isEmpty())
+			return ResponseHandler.getResponse("There is no data",HttpStatus.OK );
+		return ResponseHandler.getResponse(courses, HttpStatus.OK);
+	}
+	
+	@GetMapping("/{course-id}")
+	public ResponseEntity<Object> findCourseById(@PathVariable("course-id") Long courseId)
+	{
+		Optional<Course> courses = courseService.findByCourseId(courseId);
+		
+		if(courses.isEmpty())
+			return ResponseHandler.getResponse("There is no data",HttpStatus.OK );
 		
 		return ResponseHandler.getResponse(courses, HttpStatus.OK);
 	}

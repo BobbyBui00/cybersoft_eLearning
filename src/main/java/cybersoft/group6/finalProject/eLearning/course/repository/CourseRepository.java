@@ -16,4 +16,10 @@ import cybersoft.group6.finalProject.eLearning.user.model.User;
 @Repository
 public interface CourseRepository extends JpaRepository<Course, Long> {
 
+	@Query("SELECT e FROM Course e WHERE e.courseName = ?1")
+	public List<Course> findCourses(String courseName);
+	
+	public List<Course> findByCourseNameContaining(String courseName);
+	
+	public Optional<Course> findById(Long courseId);
 }

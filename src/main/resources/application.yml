@@ -4,11 +4,7 @@ server:
   
 #allowed:
 #  origins: localhost:4200
-  
 spring:
-  data:
-    rest:
-      base-path: /api
   datasource:
     url: jdbc:postgresql://localhost:5432/elearning
     username: postgres
