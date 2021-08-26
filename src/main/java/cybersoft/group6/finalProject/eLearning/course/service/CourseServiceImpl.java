@@ -43,12 +43,15 @@ public class CourseServiceImpl extends GenericServiceImpl<Course, Long> implemen
 		
 		//only find the attribute, not the relationship
 		// Use Optional only when they require or suggest
-		System.out.println(course.getCourseDescription());
 		User instructors = userRepository.findByUsername(dto.getCourseInstructor());
 		course.setCourseInstructor(instructors);
 		
 		CourseCategory courseCategory = courseCategoryRepository.findByCourseCategoryName(dto.getCourseCategory());
 		course.setCourseCategoryName(courseCategory);
+		
+		course.setDuration(dto.getDuration());
+		course.setPrice(dto.getPrice());
+		course.setRating(dto.getRating());
 		return courseRepository.save(course);
 	}
 
