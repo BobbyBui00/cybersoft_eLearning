@@ -34,5 +34,6 @@ public class CourseCategory extends AbstractEntity {
 				joinColumns = @JoinColumn(name = "course_category_id"),
 				inverseJoinColumns = @JoinColumn(name = "course_id"))
 	@JsonIgnore
-	private Set<Course> course = new HashSet<Course>(); 
+	private Set<Course> course = new HashSet<Course>();
+	
 }

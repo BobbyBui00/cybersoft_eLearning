@@ -13,6 +13,8 @@ import cybersoft.group6.finalProject.eLearning.commonData1.GenericServiceImpl;
 import cybersoft.group6.finalProject.eLearning.course.dto.CreateCourseDto;
 import cybersoft.group6.finalProject.eLearning.course.dto.UpdateCourseDto;
 import cybersoft.group6.finalProject.eLearning.course.model.Course;
+import cybersoft.group6.finalProject.eLearning.course.model.CourseCategory;
+import cybersoft.group6.finalProject.eLearning.course.repository.CourseCategoryRepository;
 import cybersoft.group6.finalProject.eLearning.course.repository.CourseRepository;
 import cybersoft.group6.finalProject.eLearning.user.model.User;
 import cybersoft.group6.finalProject.eLearning.user.repository.UserRepository;
@@ -28,6 +30,8 @@ public class CourseServiceImpl extends GenericServiceImpl<Course, Long> implemen
 	@Autowired
 	private UserRepository userRepository;
 	
+	private CourseCategoryRepository courseCategoryRepository;
+	
 	private ModelMapper model;
 	private MapDtoToModel<Object, Course> mapper;
 
@@ -42,6 +46,9 @@ public class CourseServiceImpl extends GenericServiceImpl<Course, Long> implemen
 		System.out.println(course.getCourseDescription());
 		User instructors = userRepository.findByUsername(dto.getCourseInstructor());
 		course.setCourseInstructor(instructors);
+		
+		CourseCategory courseCategory = courseCategoryRepository.findByCourseCategoryName(dto.getCourseCategory());
+		course.setCourseCategoryName(courseCategory);
 		return courseRepository.save(course);
 	}
 
