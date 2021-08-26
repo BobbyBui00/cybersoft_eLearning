@@ -67,4 +67,16 @@ public class Course extends AbstractEntity {
 	public void setCourseCategoryName(CourseCategory courseCategory) {
 		this.courseCategory.add(courseCategory);
 	}
+	
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	
+	public void setDuration(double duration) {
+		this.duration = duration;
+	}
+	
+	public void setRating(float rating) {
+		this.rating = rating;
+	}
 }

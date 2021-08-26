@@ -77,8 +77,7 @@ public class CourseController {
 	
 	@PostMapping("")
 	public ResponseEntity<Object> addNewCourse(@Valid 
-												@RequestBody 
-												CreateCourseDto dto,
+												@RequestBody CreateCourseDto dto,
 												BindingResult result){
 		if(result.hasErrors())
 			return ResponseHandler.getResponse("There is an error", HttpStatus.BAD_REQUEST);

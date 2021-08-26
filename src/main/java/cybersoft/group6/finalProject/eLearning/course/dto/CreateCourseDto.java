@@ -26,4 +26,6 @@ public class CreateCourseDto {
 	private double duration;
 	
 	private float rating;
+	
+	
 }
