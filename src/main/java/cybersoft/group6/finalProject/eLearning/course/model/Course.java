@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import cybersoft.group6.finalProject.eLearning.commondata.model.AbstractEntity;
 
 import cybersoft.group6.finalProject.eLearning.user.model.User;
@@ -36,8 +38,8 @@ public class Course extends AbstractEntity {
 	private double duration;
 	
 //	@NotBlank(message = "{course.courseInstructor.not-blank}")
-	@ManyToMany(mappedBy = "instructors", fetch = FetchType.LAZY)
-	private Set<User> courseInstructor = new HashSet<>();
+	@ManyToOne(fetch = FetchType.LAZY)
+	private User courseInstructor;
 	
 	private float rating;
 	
@@ -48,8 +50,8 @@ public class Course extends AbstractEntity {
 	@OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
 	private Set<CourseContent> courseContent = new HashSet<>();
 	
-	@ManyToMany(mappedBy = "course")
-	private Set<CourseCategory> courseCategory = new HashSet<>();
+	@ManyToOne(fetch = FetchType.LAZY)
+	private CourseCategory courseCategory;
 	
 	private int learnerNumber;
 	
@@ -61,11 +63,11 @@ public class Course extends AbstractEntity {
 
 	public void setCourseInstructor(User user) {
 		// TODO Auto-generated method stub
-		this.courseInstructor.add(user);
+		this.courseInstructor = user;
 	}
 	
 	public void setCourseCategory(CourseCategory courseCategory) {
-		this.courseCategory.add(courseCategory);
+		this.courseCategory = courseCategory;
 	}
 	
 	public void setPrice(double price) {
