@@ -20,4 +20,10 @@ public class CreateCourseDto {
 	@NotBlank(message = "{course.courseInstructor.not-blank}")
 	private String courseInstructor;
 	
+	@NotBlank(message = "{course.courseCategory.not-blank}")
+	private String courseCategory;
+	
+	private double duration;
+	
+	private float rating;
 }

@@ -2,8 +2,8 @@
 server:
   port: 8089
   
-allowed:
-  origins: http://localhost:4200
+#allowed:
+#  origins: localhost:4200
   
 spring:
   data:
