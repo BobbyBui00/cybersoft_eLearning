@@ -47,7 +47,7 @@ public class CourseServiceImpl extends GenericServiceImpl<Course, Long> implemen
 		course.setCourseInstructor(instructors);
 		
 		CourseCategory courseCategory = courseCategoryRepository.findByCourseCategoryName(dto.getCourseCategory());
-		course.setCourseCategoryName(courseCategory);
+		course.setCourseCategory(courseCategory);
 		
 		course.setDuration(dto.getDuration());
 		course.setPrice(dto.getPrice());
