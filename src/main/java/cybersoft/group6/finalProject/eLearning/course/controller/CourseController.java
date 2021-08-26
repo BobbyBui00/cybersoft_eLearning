@@ -46,7 +46,6 @@ public class CourseController {
 	public ResponseEntity<Object> findAllCourse(){
 		//find course
 		List<Course> courses = courseService.findAll();
-		
 		//check if the return is null
 		if(courses.isEmpty()) {
 			return ResponseHandler.getResponse("There is no data", HttpStatus.BAD_REQUEST);
