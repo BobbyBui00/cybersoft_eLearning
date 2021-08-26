@@ -36,6 +36,7 @@ import lombok.AllArgsConstructor;
 @RestController
 @RequestMapping("/api/course")
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 public class CourseController {
 	
 	@Autowired
