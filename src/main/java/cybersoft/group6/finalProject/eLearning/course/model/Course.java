@@ -49,7 +49,7 @@ public class Course extends AbstractEntity {
 	private Set<CourseContent> courseContent = new HashSet<>();
 	
 	@ManyToMany(mappedBy = "course")
-	private Set<CourseCategory> courseCategory = new HashSet<>();
+	private Set<CourseCategory> courseCategoryName = new HashSet<>();
 	
 	private int learnerNumber;
 	
@@ -64,5 +64,12 @@ public class Course extends AbstractEntity {
 		this.courseInstructor.add(user);
 	}
 	
+	public void setCourseCategoryName(CourseCategory courseCategory) {
+		this.courseCategoryName.add(courseCategory);
+	}
+	
+	public void setPrice(double price) {
+		this.price = price;
+	}
 	
 }
