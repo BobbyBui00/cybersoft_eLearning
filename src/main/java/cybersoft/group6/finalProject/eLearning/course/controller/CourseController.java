@@ -69,7 +69,7 @@ public class CourseController {
 	{
 		Optional<Course> courses = courseService.findByCourseId(courseId);
 		
-		if(courses.isEmpty())
+		if(courses == null)
 			return ResponseHandler.getResponse("There is no data",HttpStatus.OK );
 		
 		return ResponseHandler.getResponse(courses, HttpStatus.OK);
