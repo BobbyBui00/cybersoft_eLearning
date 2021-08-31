@@ -70,10 +70,8 @@ public class User extends AbstractEntity {
 	@JsonIgnore
 	private Set<Payment> paymentInfo = new HashSet<Payment>();
 	
-	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinTable(name = "user_course_instructor",
-				joinColumns = @JoinColumn(name = "user_id"),
-				inverseJoinColumns = @JoinColumn(name = "course_id"))
+	@OneToMany(mappedBy = "courseInstructor", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private Set<Course> instructors = new HashSet<>();
 	
 	// Helper method
