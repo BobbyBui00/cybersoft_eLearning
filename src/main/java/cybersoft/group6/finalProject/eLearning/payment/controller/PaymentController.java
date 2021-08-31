@@ -27,7 +27,6 @@ import lombok.AllArgsConstructor;
 @RestController
 @RequestMapping("/api/payment")
 @AllArgsConstructor
-//@CrossOrigin(origins = "localhost:8089/swagger-ui.html")
 public class PaymentController {
 
 	private PaymentService service;
@@ -40,6 +39,29 @@ public class PaymentController {
 			return ResponseHandler.getResponse("There is no payment available", HttpStatus.OK);
 		
 		return ResponseHandler.getResponse(paymentList, HttpStatus.OK);
+		
+	}
+	
+	@GetMapping("/{user-username}")
+	public ResponseEntity<Object> getAllPaymentByUsername(@Valid @PathVariable("user-username") String username) {
+		
+		List<Payment> allUserPayment = service.findPaymentByUser(username);
+		
+		if(allUserPayment.isEmpty())
+			return ResponseHandler.getResponse(HttpStatus.OK);
+		
+		return ResponseHandler.getResponse(allUserPayment, HttpStatus.OK);
+	}
+	
+	@GetMapping("search-payment/{payment-cardNumber}")
+	public ResponseEntity<Object> getPaymentByCardNumber(@Valid @PathVariable("payment-cardNumber") String cardNumber) {
+		
+		Payment foundPayment = service.findPaymentUsingCardNumber(cardNumber);
+		
+		if (foundPayment == null)
+			return ResponseHandler.getResponse(HttpStatus.OK);
+		
+		return ResponseHandler.getResponse(foundPayment, HttpStatus.OK);
 		
 	}
 	

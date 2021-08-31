@@ -11,6 +11,8 @@ public class CreateNewPaymentDto {
 	@NotBlank(message = "{payment.cardNumber.not-blank}")
 	private String cardNumber;
 	
+	private String cardType;
+	
 	@NotBlank(message = "{payment.cardHolder.not-blank}")
 	private String cardHolder;
 	
@@ -24,4 +26,6 @@ public class CreateNewPaymentDto {
 	private String dateExpired;
 	
 	private String user;
+	
+	private String email;
 }
