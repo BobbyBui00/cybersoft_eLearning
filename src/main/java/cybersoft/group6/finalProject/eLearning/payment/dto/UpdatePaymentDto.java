@@ -10,6 +10,8 @@ public class UpdatePaymentDto {
 	@NotBlank(message = "{payment.cardNumber.not-blank}")
 	private String cardNumber;
 	
+	private String cardType;
+	
 	@NotBlank(message = "{payment.cardHolder.not-blank}")
 	private String cardHolder;
 	
@@ -21,4 +23,8 @@ public class UpdatePaymentDto {
 	
 	@NotBlank(message = "{payment.dateExpired.not-blank}")
 	private String dateExpired;
+	
+	private String email;
+	
+	private String user;
 }

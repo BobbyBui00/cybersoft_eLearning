@@ -1,5 +1,7 @@
 package cybersoft.group6.finalProject.eLearning.payment.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import cybersoft.group6.finalProject.eLearning.commonData1.GenericServiceImpl;
@@ -49,6 +51,26 @@ public class PaymentServiceImpl extends GenericServiceImpl<Payment, Long> implem
 		
 		repository.save(updatedPayment);
 		
+	}
+
+	@Override
+	public List<Payment> findPaymentByUser(String username) {
+		// TODO Auto-generated method stub
+		
+		User cardHolder = userRepository.findByUsername(username);
+		
+		List<Payment> cardNumber = repository.findPaymentMethodByUsername(cardHolder);
+		
+		return cardNumber;
+	}
+
+	@Override
+	public Payment findPaymentUsingCardNumber(String cardNumber) {
+		// TODO Auto-generated method stub
+		
+		Payment foundPayment = repository.findPaymentByCardNumber(cardNumber);
+		
+		return foundPayment;
 	}
 
 }
