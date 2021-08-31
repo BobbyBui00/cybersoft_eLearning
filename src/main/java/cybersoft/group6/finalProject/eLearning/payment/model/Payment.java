@@ -21,6 +21,8 @@ public class Payment extends AbstractEntity {
 	@NotBlank(message = "{payment.cardNumber.not-blank}")
 	private String cardNumber;
 	
+	private String cardType;
+	
 	@NotBlank(message = "{payment.cardHolder.not-blank}")
 	private String cardHolder;
 	
@@ -35,4 +37,6 @@ public class Payment extends AbstractEntity {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private User user;
+	
+	private String email;
 }
