@@ -13,4 +13,5 @@ public interface UserService extends GenericService<User, Long> {
 	User updateUserInfo(UpdateUserDto dto, Long userId);
 	User createNewUser(CreateNewUserDto newUser);
 	User findByUsername(String username);
+	User updateUser(UpdateUserDto dto, String username);
 }

@@ -50,17 +50,32 @@ public class UserController {
 		return ResponseHandler.getResponse(addUser, HttpStatus.OK);
 	}
 	
-	@PutMapping("/{user-id}")
-	public ResponseEntity<Object> updateUser(@Valid @RequestBody UpdateUserDto dto, @PathVariable("user-id") Long userId, BindingResult bindingResult) {
-		 
-		if (userId == null)
+//	@PutMapping("/{user-id}")
+//	public ResponseEntity<Object> updateUser(@Valid @RequestBody UpdateUserDto dto, @PathVariable("user-id") Long userId, BindingResult bindingResult) {
+//		 
+//		if (userId == null)
+//			return ResponseHandler.getResponse(HttpStatus.BAD_REQUEST);
+//		
+//		if (bindingResult.hasErrors())
+//			return ResponseHandler.getResponse(bindingResult, HttpStatus.BAD_REQUEST);
+//		
+//		User updateUser = service.updateUserInfo(dto, userId);
+//		return ResponseHandler.getResponse(updateUser, HttpStatus.OK);
+//	}
+	
+	@PutMapping("/{username}")
+	public ResponseEntity<Object> updateUserByUsername(@Valid @RequestBody UpdateUserDto dto, @PathVariable("username") String username, BindingResult bindingResult){
+		if(username.isEmpty())
 			return ResponseHandler.getResponse(HttpStatus.BAD_REQUEST);
 		
-		if (bindingResult.hasErrors())
+		if(bindingResult.hasErrors())
 			return ResponseHandler.getResponse(bindingResult, HttpStatus.BAD_REQUEST);
 		
-		User updateUser = service.updateUserInfo(dto, userId);
-		return ResponseHandler.getResponse(updateUser, HttpStatus.OK);
+		System.out.println(username);
+		
+		User updatedUser = service.updateUser(dto, username);
+		
+		return ResponseHandler.getResponse(updatedUser, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{user-id}")
