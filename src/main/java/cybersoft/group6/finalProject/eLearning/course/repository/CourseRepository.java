@@ -22,4 +22,7 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
 	public List<Course> findByCourseNameContaining(String courseName);
 	
 	public Optional<Course> findById(Long courseId);
+	
+	@Query("SELECT c FROM Course c WHERE c.courseCategory = ?1")
+	public List<Course> findByCourseCategory(CourseCategory category);
 }
