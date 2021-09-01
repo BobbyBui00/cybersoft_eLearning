@@ -53,4 +53,15 @@ public class UserServiceImpl extends GenericServiceImpl<User, Long> implements U
 		return repository.findByUsername(username);
 	}
 
+	@Override
+	public User updateUser(UpdateUserDto dto, String username) {
+		// TODO Auto-generated method stub
+		User updatedUser = repository.findByUsername(username);
+		updatedUser.username(dto.getUsername())
+					.email(dto.getEmail())
+					.exp(dto.getExp())
+					.role(dto.getRole());
+		return repository.save(updatedUser);
+	}
+
 }
