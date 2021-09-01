@@ -47,4 +47,10 @@ public class UserServiceImpl extends GenericServiceImpl<User, Long> implements U
 		return repository.save(user);
 	}
 
+	@Override
+	public User findByUsername(String username) {
+		// TODO Auto-generated method stub
+		return repository.findByUsername(username);
+	}
+
 }

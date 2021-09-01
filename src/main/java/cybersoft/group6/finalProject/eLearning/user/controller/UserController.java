@@ -73,5 +73,14 @@ public class UserController {
 		return ResponseHandler.getResponse("Delete successfully", HttpStatus.OK);
 	}
 	
+	@GetMapping("/{username}")
+	public ResponseEntity<Object> findByUsername(@Valid @PathVariable("username") String username){
+		if(username.isEmpty())
+			return ResponseHandler.getResponse("Username is null", HttpStatus.BAD_REQUEST);
+		
+		User user = service.findByUsername(username);
+		return ResponseHandler.getResponse(user, HttpStatus.OK);
+	}
+	
 	
 }
