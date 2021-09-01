@@ -91,7 +91,27 @@ public class CourseServiceImpl extends GenericServiceImpl<Course, Long> implemen
 		return null;
 	}
 	
-	
+	@Override
+	public List<Course> getCourseByCourseCategory(String category) {
+		// TODO Auto-generated method stub
+		
+		CourseCategory courseCategory = courseCategoryRepository.findByCourseCategoryName(category);
+		
+		List<Course> listCourse = courseRepository.findByCourseCategory(courseCategory);
+		
+		return listCourse;
+	}
+
+	@Override
+	public Course searchCourseByNameAndInstructor(String courseName, String courseInstructor) {
+		// TODO Auto-generated method stub
+		
+		User foundUser = userRepository.findByUsername(courseInstructor);
+		
+		Course course = courseRepository.searchCourseByNameAndInstructor(courseName, foundUser);
+		
+		return course;
+	}
 	
 	
 }

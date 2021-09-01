@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import cybersoft.group6.finalProject.eLearning.commondata.model.ResponseHandler;
 import cybersoft.group6.finalProject.eLearning.course.dto.CreateCourseCategoryDto;
 import cybersoft.group6.finalProject.eLearning.course.dto.UpdateCourseCategoryDto;
+import cybersoft.group6.finalProject.eLearning.course.model.Course;
 import cybersoft.group6.finalProject.eLearning.course.model.CourseCategory;
 import cybersoft.group6.finalProject.eLearning.course.service.CourseCategoryService;
 
@@ -44,7 +45,7 @@ public class CourseCategoryController {
 	}
 	
 	@PostMapping("")
-	public ResponseEntity<Object> addNewCourseConent(@Valid @RequestBody CreateCourseCategoryDto dto,BindingResult bindingResult)
+	public ResponseEntity<Object> addNewCourseCategory(@Valid @RequestBody CreateCourseCategoryDto dto,BindingResult bindingResult)
 	{
 		if(bindingResult.hasErrors())
 			return ResponseHandler.getResponse(bindingResult, HttpStatus.BAD_REQUEST);
@@ -54,7 +55,7 @@ public class CourseCategoryController {
 	}
 	
 	@PutMapping("/{courseCategory-id}")
-	public ResponseEntity<Object> updateCourseContent(@Valid @RequestBody UpdateCourseCategoryDto dto,@PathVariable ("courseCategory-id") Long courseCategoryId,BindingResult bindingResult)
+	public ResponseEntity<Object> updateCourseCategory(@Valid @RequestBody UpdateCourseCategoryDto dto,@PathVariable ("courseCategory-id") Long courseCategoryId,BindingResult bindingResult)
 	{
 		if(courseCategoryId == null)
 			return ResponseHandler.getResponse(HttpStatus.BAD_REQUEST);
@@ -68,7 +69,7 @@ public class CourseCategoryController {
 	}
 	
 	@DeleteMapping("/{courseCategory-id}")
-	public ResponseEntity<Object> deleteCourseContent(@PathVariable ("courseCategory-id") Long id)
+	public ResponseEntity<Object> deleteCourseCategory(@PathVariable ("courseCategory-id") Long id)
 	{
 		if(id == null)
 			return ResponseHandler.getResponse(HttpStatus.BAD_REQUEST);
