@@ -10,4 +10,6 @@ public interface CourseCategoryService extends GenericService<CourseCategory, Lo
 	CourseCategory addNewCourseCategory(CreateCourseCategoryDto dto);
 	
 	CourseCategory updateCourseCategory(UpdateCourseCategoryDto dto,Long courseCategoryId);
+	
+
 }

@@ -63,6 +63,19 @@ public class CourseController {
 		return ResponseHandler.getResponse(courses, HttpStatus.OK);
 	}
 	
+
+	
+	@GetMapping("/search-course-category/{course-category}")
+	public ResponseEntity<Object> getAllCourseByCategory(@Valid @PathVariable("course-category") String category) {
+		
+		List<Course> listCourse = courseService.getCourseByCourseCategory(category);
+		
+		if(listCourse.isEmpty())
+			return ResponseHandler.getResponse(HttpStatus.OK);
+		
+		return ResponseHandler.getResponse(listCourse, HttpStatus.OK);
+	}
+	
 	@GetMapping("/{course-id}")
 	public ResponseEntity<Object> findCourseById(@PathVariable("course-id") Long courseId)
 	{
