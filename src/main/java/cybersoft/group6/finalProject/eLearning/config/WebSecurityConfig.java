@@ -36,15 +36,27 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 		
 		return allowMethods;
 	}
+	
+	protected List<String> setUpAllowHeaders() {
+		
+		List<String> allowHeader = new ArrayList<String>();
+		
+		allowHeader.add("Authorization");
+		allowHeader.add("Cache-control");
+		allowHeader.add("Content-Type");
+		
+		return allowHeader;
+	}
+	
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-//        corsConfiguration.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type"));
+        corsConfiguration.setAllowedHeaders(setUpAllowHeaders());
         corsConfiguration.setAllowedOrigins(setUpAllowOrigins());
         corsConfiguration.setAllowedMethods(setUpAllowMethods());
         corsConfiguration.setAllowCredentials(false);
-//        corsConfiguration.setExposedHeaders(List.of("Authorization"));
+        corsConfiguration.setExposedHeaders(setUpAllowHeaders());
         // You can customize the following part based on your project, it's only a sample
         http.authorizeRequests().antMatchers("/**").permitAll().anyRequest()
                 .authenticated().and().csrf().disable().cors().configurationSource(request -> corsConfiguration);
