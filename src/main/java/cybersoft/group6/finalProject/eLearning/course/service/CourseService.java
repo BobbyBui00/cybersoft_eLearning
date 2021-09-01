@@ -25,4 +25,6 @@ public interface CourseService extends GenericService<Course, Long> {
 	
 	List<Course> getCourseByCourseCategory(String category);
 	
+	Course searchCourseByNameAndInstructor(String courseName, String courseInstructor);
+	
 }
