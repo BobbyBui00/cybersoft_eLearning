@@ -60,7 +60,7 @@ public class PaymentController {
 		Payment foundPayment = service.findPaymentUsingCardNumber(cardNumber);
 		
 		if (foundPayment == null)
-			return ResponseHandler.getResponse(HttpStatus.OK);
+			return ResponseHandler.getResponse("There is no data", HttpStatus.OK);
 		
 		return ResponseHandler.getResponse(foundPayment, HttpStatus.OK);
 		
